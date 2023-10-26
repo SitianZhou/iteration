@@ -6,6 +6,65 @@ output: github_document
 ---
 
 
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+
+## Z score function
+```{r}
+set.seed(12345)
+```
+
+## Z score function
+
+z scores
+
+```{r}
+x_vec = rnorm(20, mean = 5, sd = 0.3)
+
+```
+
+
+compute z scores for `x_vec`
+
+```{r}
+(x_vec - mean(x_vec)) / sd(x_vec)
+```
+
+
+write a function for calculating z scores
+
+```{r}
+z_score = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop("Argument should be numebrs")
+  } else if (length(x) < 2) {
+    stop("You need at least 2 numbers to get z scores")
+  }
+  
+  z = (x - mean(x)) / sd(x)
+  z
+}
+```
+
+```{r}
+z_score(x = x_vec)
+```
+
+```{r, error=TRUE}
+z_score(3)
+z_score(c("a", "b", "c"))
+z_score(c(TRUE, TRUE, FALSE, FALSE))
+z_score(iris)
+```
+
+
+
+
+
 
 
 
