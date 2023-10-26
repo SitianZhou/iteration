@@ -1,0 +1,15 @@
+---
+title: "writing_functions"
+author: "Sitian Zhou"
+date: "2023-10-26"
+output: github_document
+---
+
+
+
+
+
+
+
+
+
