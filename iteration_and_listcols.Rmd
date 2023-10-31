@@ -1,0 +1,104 @@
+---
+title: "iteration and listcols"
+author: "Sitian Zhou"
+date: "2023-10-31"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+
+```{r}
+set.seed(12345)
+```
+
+```{r}
+vec_numeric = 1:4
+vec_char = c("a", "b", "c", "d")
+
+tibble(
+  num = vec_numeric,
+  char = vec_char
+)
+```
+
+
+
+```{r}
+l = 
+  list(
+    vec_numeric = 1:5,
+    vec_char = LETTERS,
+    matrix = matrix(1:10, nrow = 5, ncol = 2),
+    summary = summary(rnorm(100))
+  )
+
+l$vec_numeric
+l[[2]]
+l[["summary"]]
+```
+```{r}
+list_norm_samples = 
+  list(
+    a = rnorm(20, 1, 5),
+    b = rnorm(20, 0, 7),
+    c = rnorm(20, 20, 1),
+    d = rnorm(20, -45, 13)
+  )
+list_norm_samples$a
+```
+
+mean and sd function
+
+```{r}
+mean_and_sd = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop("Argument should be numebrs")
+  } else if (length(x) < 2) {
+    stop("You need at least 2 numbers to get z scores")
+  }
+  
+  mean_x = mean(x)
+  sd_x = sd(x)
+  
+  tibble(
+    mean = mean_x,
+    sd = sd_x
+  )
+}
+```
+
+
+```{r}
+mean_and_sd(list_norm_samples$a)
+mean_and_sd(list_norm_samples$b)
+```
+
+
+```{r}
+output = vector("list", length = 4)
+
+for (i in 1:4) {
+  output[[i]] = mean_and_sd(list_norm_samples[[i]])
+}
+
+```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
